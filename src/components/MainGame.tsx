@@ -78,8 +78,7 @@ export default class MainGame extends Component {
       case -1:
         return <Text style={styles.iconO}>O</Text>;
       default:
-        // return <View />;
-        <Text style={styles.iconX}>X</Text>;
+        return <View />;
     }
   };
 

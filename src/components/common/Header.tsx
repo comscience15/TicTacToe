@@ -28,7 +28,6 @@ export default class Header extends Component<IProps> {
   }
   private imageSrc = () => {
     if (this.props.backgroundImage == null) {
-      //   return require('../assests/img/bg_dialog_react.png');
       return require('../../assets/img/bg_dialog_react.png');
     } else {
       return this.props.backgroundImage;
