@@ -1,12 +1,5 @@
-import React, {Component} from 'react';
-import {
-  Alert,
-  Button,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, { Component } from 'react';
+import { Alert, Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 let countFillAllGameBoard = 0;
 
@@ -30,13 +23,12 @@ export default class MainGame extends Component {
 
   onPress = (row, column) => {
     const currentPlayer = this.state.currentPlayer;
-    countFillAllGameBoard++;
     // one time pick tile
     const value = this.state.gameState[row][column];
     if (value !== 0) {
       return;
     }
-
+    
     // set tile
     const array = this.state.gameState.slice();
     array[row][column] = currentPlayer;
@@ -49,6 +41,7 @@ export default class MainGame extends Component {
     const nextPlayer = currentPlayer === 1 ? -1 : 1;
     this.setState({currentPlayer: nextPlayer});
 
+    countFillAllGameBoard++;
     // check winner
     const winner = this.winnerPlayer();
     console.log('Winner: ' + winner);
