@@ -1,5 +1,12 @@
-import React, { Component } from 'react';
-import { Alert, Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, {Component} from 'react';
+import {
+  Alert,
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 let countFillAllGameBoard = 0;
 
@@ -28,13 +35,10 @@ export default class MainGame extends Component {
     if (value !== 0) {
       return;
     }
-    
+
     // set tile
     const array = this.state.gameState.slice();
     array[row][column] = currentPlayer;
-    array.forEach(element => {
-      console.log(element);
-    });
     this.setState({gameState: array});
 
     // switch to other player
@@ -44,8 +48,6 @@ export default class MainGame extends Component {
     countFillAllGameBoard++;
     // check winner
     const winner = this.winnerPlayer();
-    console.log('Winner: ' + winner);
-    console.log('countFillAllGameBoard: ' + countFillAllGameBoard);
     if (winner === 1) {
       Alert.alert('Player 1 is the Winner');
       this.newGame();
@@ -83,7 +85,6 @@ export default class MainGame extends Component {
     // Check row
     for (let i = 0; i < all_tiles; i++) {
       sum = array[i][0] + array[i][1] + array[i][2];
-      console.log('Sum row ' + (i + 1) + ': ' + sum);
       if (sum === 3) {
         return 1;
       } else if (sum === -3) {
@@ -93,7 +94,6 @@ export default class MainGame extends Component {
     // Check column
     for (let i = 0; i < all_tiles; i++) {
       sum = array[0][i] + array[1][i] + array[2][i];
-      console.log('Sum column ' + (i + 1) + ': ' + sum);
       if (sum === 3) {
         return 1;
       } else if (sum === -3) {
@@ -103,14 +103,12 @@ export default class MainGame extends Component {
 
     // check diagnals
     sum = array[0][0] + array[1][1] + array[2][2];
-    console.log('Sum 1st Diagmals: ' + sum);
     if (sum === 3) {
       return 1;
     } else if (sum === -3) {
       return -1;
     }
     sum = array[2][0] + array[1][1] + array[0][2];
-    console.log('Sum 2nd Diagmals: ' + sum);
     if (sum === 3) {
       return 1;
     } else if (sum === -3) {
@@ -125,7 +123,6 @@ export default class MainGame extends Component {
         isGameDone = true;
       }
     }
-    console.log('isGameDone: ' + isGameDone);
     if (!isGameDone) {
       return 0;
     }
